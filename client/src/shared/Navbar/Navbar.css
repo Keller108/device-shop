@@ -1,0 +1,55 @@
+.navbar {
+    width: 100%;
+    height: 68px;
+    background-color: white;
+}
+
+.navbar__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1400px;
+    padding: 4px 20px;
+    margin: 0 auto;
+}
+
+.navbar__content a {
+    text-decoration: none;
+}
+
+.navbar__label {
+    color: #202020;
+}
+
+.navbar__action-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navbar__action-btn {
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.navbar__action-btn:last-of-type {
+    margin-right: 0;
+}
+
+.navbar__action-btn_type_basket {
+    width: 40px;
+    height: 40px;
+
+    background-image: url("./icons/header-basket-icon_white.svg");
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    outline: none;
+    border: none;
+    border-radius: 40px;
+    background-color: #202020;
+}
