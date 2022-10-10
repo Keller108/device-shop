@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { LOGIN_ROUTE } from '../../shared/utils/const';
 import './AuthPage.css';
 
 export function AuthPage() {
@@ -10,6 +12,7 @@ export function AuthPage() {
                     {/* <label htmlFor="email" className="auth-page__input-label"></label> */}
                     <input type="text" className="auth-page__input" name="email"/>
                     <input type="text" className="auth-page__input" name="password"/>
+                    <p className="auth-page__another-form-link">Уже зарегистрированы?<br/><Link to={LOGIN_ROUTE}>Войти</Link></p>
                 </form>
             </div>
         </div>

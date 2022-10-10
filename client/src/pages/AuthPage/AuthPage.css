@@ -8,8 +8,8 @@
 }
 
 .auth-page__auth-container {
-    width: 480px;
-    height: 360px;
+    width: 420px;
+    height: auto;
     background-color: white;
     border-radius: 40px;
     padding: 40px;
@@ -26,6 +26,8 @@
 .auth-page__input {
     height: 30px;
     margin-bottom: 10px;
-    border: none;
-    border-bottom: 1px solid #202020;
+    border: 1px solid #202020;
+    border-radius: 7px;
+    padding-left: 10px;
+    outline: none;
 }

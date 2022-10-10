@@ -2,17 +2,19 @@ import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { Context } from '../..';
-import { SHOP_ROUTE } from '../utils/const';
+import { LOGIN_ROUTE, SHOP_ROUTE } from '../utils/const';
+import { useNavigate } from "react-router-dom";
 import './Navbar.css';
 
 export const Navbar = observer(() => {
     const { user } = useContext(Context);
+    const navigate = useNavigate();
 
     let actionContent: JSX.Element[] | [] = [];
 
     if (!user.isAuth) {
         actionContent = [
-            <button onClick={() => user.setIsAuth(true)} className="navbar__action-btn">Войти</button>
+            <button onClick={() => navigate(LOGIN_ROUTE)} className="navbar__action-btn">Войти</button>
         ];
     }
 
