@@ -1,6 +1,6 @@
 import { makeAutoObservable, observable, action, computed } from "mobx";
 
-type DefaultEntityType = {
+export type DefaultEntityType = {
     id: number;
     name: string;
 }

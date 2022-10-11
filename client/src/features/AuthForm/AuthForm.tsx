@@ -46,8 +46,6 @@ export function AuthForm({ type, isReg } : AuthFormType) {
         }
     }
 
-    console.log('formPath', formPath);
-
     return (
         <div className="auth-form">
             <h2 className="auth-form__form-title">{formConfig.title}</h2>

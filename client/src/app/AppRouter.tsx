@@ -5,11 +5,11 @@ import { authRoutes, AuthRouteType, publicRoutes } from "../routes";
 import { SHOP_ROUTE } from '../shared/utils/const';
 
 export function AppRouter() {
-    const { user } = useContext(Context);
+    const { userStore } = useContext(Context);
 
     return (
         <Routes>
-            {user.isAuth && authRoutes.map(({ path, Component }: AuthRouteType) => 
+            {userStore.isAuth && authRoutes.map(({ path, Component }: AuthRouteType) => 
                 <Route key={path} path={path} element={Component()} />
             )}
             {publicRoutes.map(({ path, Component }: AuthRouteType) => 

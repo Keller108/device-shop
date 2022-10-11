@@ -7,21 +7,21 @@ import { useNavigate } from "react-router-dom";
 import './Navbar.css';
 
 export const Navbar = observer(() => {
-    const { user } = useContext(Context);
+    const { userStore } = useContext(Context);
     const navigate = useNavigate();
 
     let actionContent: JSX.Element[] | [] = [];
 
-    if (!user.isAuth) {
+    if (!userStore.isAuth) {
         actionContent = [
             <button onClick={() => navigate(LOGIN_ROUTE)} className="navbar__action-btn">Войти</button>
         ];
     }
 
-    if (user.isAuth) {
+    if (userStore.isAuth) {
         actionContent = [
             <button className="navbar__action-btn">Админ панель</button>,
-            <button className="navbar__action-btn" onClick={() => user.setIsAuth(false)}>Выйти</button>,
+            <button className="navbar__action-btn" onClick={() => userStore.setIsAuth(false)}>Выйти</button>,
             <button className="navbar__action-btn navbar__action-btn_type_basket" aria-label='Корзина'/>
         ];
     }

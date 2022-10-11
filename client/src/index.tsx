@@ -15,8 +15,8 @@ const root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
       <Context.Provider value={{
-        user: new UserStore(),
-        device: new DeviceStore()
+        userStore: new UserStore(),
+        deviceStore: new DeviceStore()
       }}>
         <App />
       </Context.Provider>

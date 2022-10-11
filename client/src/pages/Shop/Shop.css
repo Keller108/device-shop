@@ -1,0 +1,37 @@
+.shop {
+    height: auto;
+    width: 100%;
+    margin: 0;
+    padding: 40px 0;
+    box-sizing: border-box;
+}
+
+.shop__content-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.type-bar {
+    width: 20%;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.type-bar__item {
+    height: 40px;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #202020;
+}
