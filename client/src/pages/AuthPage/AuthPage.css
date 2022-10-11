@@ -6,28 +6,3 @@
     height: calc(100% - 75px);
     background-color: #202020;
 }
-
-.auth-page__auth-container {
-    width: 420px;
-    height: auto;
-    background-color: white;
-    border-radius: 40px;
-    padding: 40px;
-    text-align: center;
-}
-
-.auth-page__form {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-}
-
-.auth-page__input {
-    height: 30px;
-    margin-bottom: 10px;
-    border: 1px solid #202020;
-    border-radius: 7px;
-    padding-left: 10px;
-    outline: none;
-}
