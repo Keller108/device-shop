@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Context } from '../../app/App';
 import { DeviceEntityType } from '../../entities/Device/store/DeviceStore';
+import { BrandsBar } from '../../features/BrandsBar';
 import { TypeBar } from '../../features/TypeBar';
 import './Shop.css';
 
@@ -14,7 +15,8 @@ export function Shop() {
                     <TypeBar />
                 </div>
                 <main className="shop__main">
-                    <h1 className="shop__title">Samsung</h1>
+                    <BrandsBar />
+                    {/* <h1 className="shop__title">Samsung</h1>
                     <ul className="shop__devices">
                         {deviceStore._devices.map((device: DeviceEntityType) => <li 
                             className="shop__device-item">
@@ -25,7 +27,7 @@ export function Shop() {
                                 </div>
                                 
                             </li>)}
-                    </ul>
+                    </ul> */}
                 </main>
             </div>
         </div>
