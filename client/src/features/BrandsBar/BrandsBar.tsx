@@ -8,7 +8,7 @@ export function BrandsBar() {
     
     return (
         <ul className="brands-bar">
-            {deviceStore.brands.map((item: DefaultEntityType) => <li className="brands-bar__item">{item.name}</li>)}
+            {deviceStore.brands.map((item: DefaultEntityType) => <li key={item.id} className="brands-bar__item">{item.name}</li>)}
         </ul>
     )
 }

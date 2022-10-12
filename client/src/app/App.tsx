@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import DeviceStore from "../entities/Device/store/DeviceStore";
@@ -8,18 +9,16 @@ import { AppRouter } from "./AppRouter";
 
 export const Context = React.createContext<any>(null);
 
-export function App() {
-    return (
-      <Context.Provider value={{
-        userStore: new UserStore(),
-        deviceStore: new DeviceStore()
-      }}>
-        <BrowserRouter>
-          <div className="app">
-            <Navbar />
-            <AppRouter />
-          </div>
-        </BrowserRouter>
-      </Context.Provider>
-    );
-}
+export const App = observer(() => {
+  return (
+    <Context.Provider value={{
+      userStore: new UserStore(),
+      deviceStore: new DeviceStore()
+    }}>
+      <div className="app">
+        <Navbar />
+        <AppRouter />
+      </div>
+    </Context.Provider>
+  );
+});

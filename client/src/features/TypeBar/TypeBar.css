@@ -31,3 +31,11 @@
     border-bottom: 1px solid #efefef;
     cursor: pointer;
 }
+
+.type-bar__list-item_active {
+    color: #23a7ff
+}
+
+.type-bar__list-item-text {
+    color: inherit;
+}

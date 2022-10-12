@@ -36,19 +36,7 @@ export default class DeviceStore {
         ];
         this._selectedType = {};
 
-        makeAutoObservable(this, {
-            _types: observable,
-            _brands: observable,
-            _devices: observable,
-            _selectedType: observable,
-            setTypes: action,
-            setBrands: action,
-            setDevices: action,
-            types: computed,
-            brands: computed,
-            devices: computed,
-            selectedType: computed,
-        });
+        makeAutoObservable(this);
     }
 
     setTypes(types: DefaultEntityType[]) {
