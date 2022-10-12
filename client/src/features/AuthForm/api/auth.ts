@@ -1,17 +1,15 @@
-import { REGISTRATION_ROUTE } from "../../../shared/utils/const";
-
-const BASE_URL = 'http://localhost:3000';
+const REGISTRATION_URL = 'http://localhost:5000/api/user/registration';
 
 const handleResponse = (res: Response) => res.ok ? res.json() : Promise.reject(`Ошибка ${res.status}`)
 
-export const register = (email: string, password: string) => {
-  return fetch(`${BASE_URL}${REGISTRATION_ROUTE}`, {
+export const register = (email: string, password: string, role: string = "USER") => {
+  return fetch(`${REGISTRATION_URL}`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({email, password}),
+    body: JSON.stringify({email, password, role}),
   })
     .then(handleResponse)
 };

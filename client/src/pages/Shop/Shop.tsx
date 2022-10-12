@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Context } from '../..';
-import { DefaultEntityType, DeviceEntityType } from '../../entities/Device/store/DeviceStore';
+import { DeviceEntityType } from '../../entities/Device/store/DeviceStore';
+import { TypeBar } from '../../features/TypeBar';
 import './Shop.css';
 
 export function Shop() {
@@ -9,9 +10,9 @@ export function Shop() {
     return (
         <div className="shop">
             <div className="shop__content-wrapper">
-                <aside className="type-bar">
-                    {deviceStore._types.map((item: DefaultEntityType) => <li className="type-bar__item" key={item.name}>{item.name}</li> )}
-                </aside>
+                <div className="shop__aside">
+                    <TypeBar />
+                </div>
                 <main className="shop__main">
                     <h1 className="shop__title">Samsung</h1>
                     <ul className="shop__devices">
