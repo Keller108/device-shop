@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import { Routes, Navigate, Route } from "react-router-dom";
-import { Context } from "..";
 import { authRoutes, AuthRouteType, publicRoutes } from "../routes";
 import { SHOP_ROUTE } from '../shared/utils/const';
+import { Context } from './App';
 
 export function AppRouter() {
     const { userStore } = useContext(Context);

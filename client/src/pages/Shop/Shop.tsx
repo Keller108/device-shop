@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Context } from '../..';
+import { Context } from '../../app/App';
 import { DeviceEntityType } from '../../entities/Device/store/DeviceStore';
 import { TypeBar } from '../../features/TypeBar';
 import './Shop.css';
