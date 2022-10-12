@@ -1,19 +1,35 @@
 import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Context } from '../../app/App';
 import { DefaultEntityType } from '../../entities/Device/store/DeviceStore';
+import { getTypes } from './store/apiTypes';
 import './TypeBar.css';
 
 export const TypeBar = observer(() => {
+    const [types, setTypes] = useState([]);
     const { deviceStore } = useContext(Context);
     let selectedType = toJS(deviceStore.selectedType.name);
+
+    useEffect(() => {
+        getTypes()
+            .then((result) => {
+                setTypes(result);
+            })
+            .catch( (err) => {
+                console.log(err);
+            });
+    }, [])
+
+    useEffect(() => {
+        console.log('types', types);
+    }, [types])
 
     return (
         <aside className="type-bar">
             <h2 className="type-bar__title">Категории:</h2>
             <ul className="type-bar__list">
-                {deviceStore._types.map((item: DefaultEntityType) => <li
+                {types?.map((item: DefaultEntityType) => <li
                     onClick={() => {
                         deviceStore.setSelectedType(item);
                     }}
