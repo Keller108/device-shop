@@ -1,12 +1,11 @@
+import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import { useContext, useEffect } from 'react';
-import { Context } from '../../app/App';
 import { DefaultEntityType } from '../../entities/Device/store/DeviceStore';
 import { typesBarContext } from '../../processes/TypesBarProcess';
 import './TypeBar.css';
 
 export const TypeBar = observer(() => {
-    const { deviceStore } = useContext(Context);
     const { typesBarStore } = useContext(typesBarContext);
 
     useEffect(() => {
@@ -18,16 +17,14 @@ export const TypeBar = observer(() => {
             <h2 className="type-bar__title">Категории:</h2>
             <ul className="type-bar__list">
                 {typesBarStore.types?.map((item: DefaultEntityType) => <li
-                    onClick={() => {
-                        deviceStore.setSelectedType(item);
-                    }}
-                    className={deviceStore.selectedType === item.name
+                    onClick={() => typesBarStore.setSelectedType(item)}
+                    className={typesBarStore.selectedType === item
                             ? 'type-bar__list-item type-bar__list-item_active'
                                 : 'type-bar__list-item'}
-                    key={item.id}>
+                    key={item.name}>
                         <p className={"type-bar__list-item-text"}>{item.name}</p>
                     </li>)}
             </ul>
         </aside>
     )
-})
+});

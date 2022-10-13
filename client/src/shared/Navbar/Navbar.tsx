@@ -1,12 +1,11 @@
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { observer } from 'mobx-react-lite';
 import { LOGIN_ROUTE, SHOP_ROUTE } from '../utils/routes';
 import { useNavigate } from "react-router-dom";
 import './Navbar.css';
 import { Context } from '../../app/App';
 
-export const Navbar = observer(() => {
+export function Navbar() {
     const { userStore } = useContext(Context);
     const navigate = useNavigate();
 
@@ -14,15 +13,15 @@ export const Navbar = observer(() => {
 
     if (!userStore.isAuth) {
         actionContent = [
-            <button onClick={() => navigate(LOGIN_ROUTE)} className="navbar__action-btn">Войти</button>
+            <button key="sign-in" onClick={() => navigate(LOGIN_ROUTE)} className="navbar__action-btn">Войти</button>
         ];
     }
 
     if (userStore.isAuth) {
         actionContent = [
-            <button className="navbar__action-btn">Админ панель</button>,
-            <button className="navbar__action-btn" onClick={() => userStore.setIsAuth(false)}>Выйти</button>,
-            <button className="navbar__action-btn navbar__action-btn_type_basket" aria-label='Корзина'/>
+            <button key="admin-panel" className="navbar__action-btn">Админ панель</button>,
+            <button key="exit" className="navbar__action-btn" onClick={() => userStore.setIsAuth(false)}>Выйти</button>,
+            <button key="basket" className="navbar__action-btn navbar__action-btn_type_basket" aria-label='Корзина'/>
         ];
     }
 
@@ -36,4 +35,4 @@ export const Navbar = observer(() => {
             </div>
         </header>
     )
-});
+}

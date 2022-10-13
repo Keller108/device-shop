@@ -15,7 +15,7 @@ export function AppRouter() {
             {publicRoutes.map(({ path, Component }: AuthRouteType) => 
                 <Route key={path} path={path} element={Component()} />
             )}
-            <Route path="/*" element={<Navigate replace={true} to={SHOP_ROUTE} />} />
+            <Route path="/*" element={<Navigate replace={true} to={SHOP_ROUTE} />}/>
         </Routes>
     )
 }

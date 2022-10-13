@@ -8,3 +8,4 @@ export const DEVICE_ROUTE = '/device';
 
 export const BRANDS_URL = `${BASE_API_ROUTE}/brand`;
 export const TYPES_URL = `${BASE_API_ROUTE}/type`;
+export const DEVICES_URL = `${BASE_API_ROUTE}${DEVICE_ROUTE}`;

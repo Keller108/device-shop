@@ -1,18 +1,22 @@
 import { action, makeAutoObservable, observable } from "mobx";
-import { DeviceEntityType } from "../../../entities/Device/store/DeviceStore";
+import { DefaultEntityType, DeviceEntityType } from "../../../entities/Device/store/DeviceStore";
 import { handleResponse } from "../../../shared/utils/handleResponse";
 import { BRANDS_URL } from "../../../shared/utils/routes";
 
 export class BrandsBarStore {
     brands: [] | DeviceEntityType[];
+    selectedBrand: {} | DefaultEntityType;
 
     constructor() {
         this.brands = [];
+        this.selectedBrand = {};
 
         makeAutoObservable(this, {
             brands: observable,
-            fetchBrands: action
-        });
+            selectedBrand: observable,
+            fetchBrands: action,
+            setSelectedBrand: action
+        })
     }
 
     private getBrands() {
@@ -27,5 +31,9 @@ export class BrandsBarStore {
 
     public fetchBrands() {
         this.getBrands().then(res => this.brands = res);
+    }
+
+    public setSelectedBrand(brand: DefaultEntityType) {
+        this.selectedBrand = brand;
     }
 }

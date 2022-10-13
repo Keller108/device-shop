@@ -3,6 +3,7 @@
     flex-flow: row wrap;
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 .brands-bar__item {
@@ -19,6 +20,11 @@
 }
 
 .brands-bar__item:hover {
+    background-color: #202020;
+    color: white;
+}
+
+.brands-bar__item_active {
     background-color: #202020;
     color: white;
 }

@@ -13,9 +13,15 @@ export const BrandsBar = observer(() => {
 
     return (
         <ul className="brands-bar">
-            {brandsBarStore.brands?.map((item: DefaultEntityType) => <li 
-                key={item.id}
-                className="brands-bar__item">{item.name}</li>)}
+            {brandsBarStore.brands?.map((item: DefaultEntityType) => <li
+                onClick={() => brandsBarStore.setSelectedBrand(item)}
+                key={item.name}
+                className={brandsBarStore.selectedBrand === item
+                    ? 'brands-bar__item brands-bar__item_active'
+                        : 'brands-bar__item'}>
+                    {item.name}
+                </li>
+            )}
         </ul>
     )
 });

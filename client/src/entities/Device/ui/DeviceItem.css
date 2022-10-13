@@ -1,0 +1,36 @@
+.device-item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    height: auto;
+    padding: 0;
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.device-item:hover {
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.device-item__img {
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.device-item__text-wrap {
+    padding: 10px 20px;
+}
+
+.device-item__name {
+
+}
+
+.device-item__price {
+    
+}
