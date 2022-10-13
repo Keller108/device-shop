@@ -1,12 +1,11 @@
-import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import { useContext, useEffect } from 'react';
 import { DefaultEntityType } from '../../entities/Device/store/DeviceStore';
-import { typesBarContext } from '../../processes/TypesBarProcess';
+import { shopingContext } from '../../processes/ShopingProcess';
 import './TypeBar.css';
 
 export const TypeBar = observer(() => {
-    const { typesBarStore } = useContext(typesBarContext);
+    const { typesBarStore } = useContext(shopingContext);
 
     useEffect(() => {
         typesBarStore.fetchTypes();

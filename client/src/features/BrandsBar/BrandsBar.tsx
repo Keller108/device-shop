@@ -1,11 +1,11 @@
 import { observer } from 'mobx-react-lite';
 import { useContext, useEffect } from 'react';
 import { DefaultEntityType } from '../../entities/Device/store/DeviceStore';
-import { brandsBarContext } from '../../processes/BrandsBarProcess';
+import { shopingContext } from '../../processes/ShopingProcess';
 import './BrandsBar.css';
 
 export const BrandsBar = observer(() => {
-    const { brandsBarStore } = useContext(brandsBarContext);
+    const { brandsBarStore } = useContext(shopingContext);
 
     useEffect(() => {
         brandsBarStore.fetchBrands();
