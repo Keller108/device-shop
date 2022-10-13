@@ -1,6 +1,6 @@
 import { FormEventHandler, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../../shared/utils/const';
+import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../../shared/utils/routes';
 import { register } from './api/auth';
 import './AuthForm.css';
 

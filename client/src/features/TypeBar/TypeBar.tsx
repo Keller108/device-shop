@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../../app/App';
 import { DefaultEntityType } from '../../entities/Device/store/DeviceStore';
-import { getTypes } from './store/apiTypes';
+import { getTypes } from './api/typesApi';
 import './TypeBar.css';
 
 export const TypeBar = observer(() => {
@@ -16,14 +16,8 @@ export const TypeBar = observer(() => {
             .then((result) => {
                 setTypes(result);
             })
-            .catch( (err) => {
-                console.log(err);
-            });
+            .catch(err => console.log(err));
     }, [])
-
-    useEffect(() => {
-        console.log('types', types);
-    }, [types])
 
     return (
         <aside className="type-bar">

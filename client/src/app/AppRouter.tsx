@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Routes, Navigate, Route } from "react-router-dom";
 import { authRoutes, AuthRouteType, publicRoutes } from "../routes";
-import { SHOP_ROUTE } from '../shared/utils/const';
+import { SHOP_ROUTE } from '../shared/utils/routes';
 import { Context } from './App';
 
 export function AppRouter() {

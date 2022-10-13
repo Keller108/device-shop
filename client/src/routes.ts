@@ -9,7 +9,7 @@ import { ADMIN_ROUTE,
     LOGIN_ROUTE,
     REGISTRATION_ROUTE,
     SHOP_ROUTE
-} from "./shared/utils/const";
+} from "./shared/utils/routes";
 
 export type AuthRouteType = {
     path: string;

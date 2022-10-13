@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { AuthForm } from '../../features/AuthForm';
-import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../../shared/utils/const';
+import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../../shared/utils/routes';
 import './AuthPage.css';
 
 export function AuthPage() {

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
-import { LOGIN_ROUTE, SHOP_ROUTE } from '../utils/const';
+import { LOGIN_ROUTE, SHOP_ROUTE } from '../utils/routes';
 import { useNavigate } from "react-router-dom";
 import './Navbar.css';
 import { Context } from '../../app/App';
