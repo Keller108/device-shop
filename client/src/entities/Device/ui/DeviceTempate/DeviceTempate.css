@@ -1,0 +1,18 @@
+.device-template {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 500px;
+    height: 100%;
+    padding: 0;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.device-template__text {
+    font-size: 15px;
+    font-weight: 500;
+    color: #aaaaaa;
+}

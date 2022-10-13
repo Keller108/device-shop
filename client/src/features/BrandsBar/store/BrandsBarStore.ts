@@ -1,11 +1,11 @@
 import { action, makeAutoObservable, observable } from "mobx";
-import { DefaultEntityType, DeviceEntityType } from "../../../entities/Device/store/DeviceStore";
+import { DefaultEntityType } from "../../../entities/Device/store/DeviceStore";
 import { handleResponse } from "../../../shared/utils/handleResponse";
 import { BRANDS_URL } from "../../../shared/utils/routes";
 
 export class BrandsBarStore {
-    brands: [] | DeviceEntityType[];
-    selectedBrand: {} | DefaultEntityType;
+    brands: DefaultEntityType[] | [];
+    selectedBrand: DefaultEntityType | {};
 
     constructor() {
         this.brands = [];

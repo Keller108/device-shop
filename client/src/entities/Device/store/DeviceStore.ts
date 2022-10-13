@@ -27,8 +27,8 @@ export default class DeviceStore {
         });
     }
 
-    private fetchDevices(typeId?: string, brandId?: string) {
-        return fetch(`${DEVICES_URL}?typeId=${typeId}&brandId=${brandId}`, {
+    private fetchDevices(typeId?: number, brandId?: number) {
+        return fetch(`${DEVICES_URL}?typeId=${typeId ? typeId : ''}&brandId=${brandId ? brandId : ''}`, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',
@@ -37,7 +37,7 @@ export default class DeviceStore {
         }).then(handleResponse).catch(err => console.log(err));
     }
 
-    public getDevices(typeId?: string, brandId?: string) {
+    public getDevices(typeId?: number, brandId?: number) {
         this.fetchDevices(typeId, brandId).then(res => this.devices = res);
     }
 }

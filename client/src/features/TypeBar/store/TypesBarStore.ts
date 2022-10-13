@@ -1,15 +1,15 @@
 import { action, makeAutoObservable, observable } from "mobx";
-import { DefaultEntityType, DeviceEntityType } from "../../../entities/Device/store/DeviceStore";
+import { DefaultEntityType } from "../../../entities/Device/store/DeviceStore";
 import { handleResponse } from "../../../shared/utils/handleResponse";
 import { TYPES_URL } from "../../../shared/utils/routes";
 
 export class TypesBarStore {
-    types: [] | DefaultEntityType[];
+    types: DefaultEntityType[] | [];
     selectedType: DefaultEntityType | {};
 
     constructor() {
         this.types = [];
-        this.selectedType = {};
+        this.selectedType = 3;
 
         makeAutoObservable(this, {
             types: observable,
