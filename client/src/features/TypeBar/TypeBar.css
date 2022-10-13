@@ -9,8 +9,9 @@
 }
 
 .type-bar__title {
-    font-size: 20px;
+    font-size: 18px;
     margin: 0;
+    font-weight: 600;
 }
 
 .type-bar__list {
@@ -38,4 +39,6 @@
 
 .type-bar__list-item-text {
     color: inherit;
+    font-weight: normal;
+    font-size: 15px;
 }
