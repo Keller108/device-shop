@@ -5,7 +5,11 @@ import { useNavigate } from "react-router-dom";
 import './Navbar.css';
 import { Context } from '../../app/App';
 
-export function Navbar() {
+type NavbarProps = {
+    signOut: () => void;
+}
+
+export function Navbar({ signOut }: NavbarProps) {
     const { userStore } = useContext(Context);
     const navigate = useNavigate();
 
@@ -20,7 +24,7 @@ export function Navbar() {
     if (userStore.isAuth) {
         actionContent = [
             <button key="admin-panel" className="navbar__action-btn">Админ панель</button>,
-            <button key="exit" className="navbar__action-btn" onClick={() => userStore.setIsAuth(false)}>Выйти</button>,
+            <button key="exit" className="navbar__action-btn" onClick={() => signOut()}>Выйти</button>,
             <button key="basket" className="navbar__action-btn navbar__action-btn_type_basket" aria-label='Корзина'/>
         ];
     }

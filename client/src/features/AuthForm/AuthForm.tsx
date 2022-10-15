@@ -1,24 +1,20 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../../shared/utils/routes';
-import { register } from './api/auth';
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Context } from '../../app/App';
+import { REGISTRATION_ROUTE, SHOP_ROUTE } from '../../shared/utils/routes';
+import { register, signIn } from './api/auth';
 import './AuthForm.css';
+import { authConfig, FormConfig, registerConfig } from './const/authConfig';
 
 type AuthFormType = {
     type: string;
 };
 
-type FormConfig = {
-    title: string,
-    btnText: string,
-    linkText: string,
-    linkTo: string,
-    path: string
-};
-
 export function AuthForm({ type } : AuthFormType) {
+    const { userStore } = useContext(Context);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     let formConfig: FormConfig = {
         title: '',
@@ -29,23 +25,11 @@ export function AuthForm({ type } : AuthFormType) {
     };
 
     if (type === 'register') {
-        formConfig = {
-            title: 'Регистрация',
-            btnText: 'Зарегистрироваться',
-            linkText: 'Уже зарегистрированы?',
-            linkTo: 'Войти',
-            path: LOGIN_ROUTE
-        }
+        formConfig = registerConfig;
     }
 
     if (type === 'auth') {
-        formConfig = {
-            title: 'Авторизация',
-            btnText: 'Войти',
-            linkText: 'Еще не зарегистрированы?',
-            linkTo: 'Регистрация',
-            path: REGISTRATION_ROUTE
-        }
+        formConfig = authConfig;
     }
 
     const onEmailInputChange = (evt: any) => {
@@ -60,8 +44,24 @@ export function AuthForm({ type } : AuthFormType) {
 
     const handleSunbmitForm = (e: any) => {
         e.preventDefault();
-        register(email, password)
-            .then(res => console.log('res', res));
+        type === 'register' ? register(email, password)
+            .then((res) => {
+                if (res.token) {
+                    localStorage.setItem('jwt', res.token);
+                    userStore.setIsAuth(true);
+                    navigate(SHOP_ROUTE);
+                    // tokenCheck();
+                }            
+            }).catch(err => console.log(err))
+                : signIn(email, password)
+                    .then((res) => {
+                        if (res.token) {
+                            localStorage.setItem('jwt', res.token);
+                            userStore.setIsAuth(true);
+                            navigate(SHOP_ROUTE);
+                            // tokenCheck();
+                        }            
+                    }).catch(err => console.log(err))
     }
 
     return (
