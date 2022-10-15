@@ -15,13 +15,13 @@ export const TypeBar = observer(() => {
         <aside className="type-bar">
             <h2 className="type-bar__title">Категории:</h2>
             <ul className="type-bar__list">
-                {typesBarStore.types?.map((item: DefaultEntityType) => <li
-                    onClick={() => typesBarStore.setSelectedType(item)}
-                    className={typesBarStore.selectedType === item
+                {typesBarStore.types?.map((type: DefaultEntityType) => <li
+                    onClick={() => typesBarStore.setSelectedType(type)}
+                    className={typesBarStore.selectedType === type
                             ? 'type-bar__list-item type-bar__list-item_active'
                                 : 'type-bar__list-item'}
-                    key={item.name}>
-                        <p className={"type-bar__list-item-text"}>{item.name}</p>
+                    key={type.name}>
+                        <p className={"type-bar__list-item-text"}>{type.name}</p>
                     </li>)}
             </ul>
         </aside>

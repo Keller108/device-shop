@@ -9,7 +9,7 @@ export class TypesBarStore {
 
     constructor() {
         this.types = [];
-        this.selectedType = 3;
+        this.selectedType = {};
 
         makeAutoObservable(this, {
             types: observable,

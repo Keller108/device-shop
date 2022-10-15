@@ -28,7 +28,23 @@ export default class DeviceStore {
     }
 
     private fetchDevices(typeId?: number, brandId?: number) {
-        return fetch(`${DEVICES_URL}?typeId=${typeId ? typeId : ''}&brandId=${brandId ? brandId : ''}`, {
+        let query;
+        if (typeId && brandId) {
+            query = `?typeId=${typeId}&brandId=${brandId}`;
+        }
+        if (!typeId && brandId) {
+            query = `?brandId=${brandId}`;
+        }
+        if (typeId && !brandId) {
+            query = `?typeId=${typeId}`;
+        }
+        if (!typeId && !brandId) {
+            query = '';
+        }
+
+        // console.log('query', query);
+
+        return fetch(`${DEVICES_URL}${query}`, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',
@@ -38,6 +54,6 @@ export default class DeviceStore {
     }
 
     public getDevices(typeId?: number, brandId?: number) {
-        this.fetchDevices(typeId, brandId).then(res => this.devices = res);
+        this.fetchDevices(typeId, brandId).then(res => this.devices = res.rows);
     }
 }

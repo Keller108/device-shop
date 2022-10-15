@@ -1,4 +1,4 @@
-import { observer } from 'mobx-react-lite';
+import { toJS } from 'mobx';
 import { useContext, useEffect } from 'react';
 import { DeviceList } from '../../entities/Device/ui/DeviceList/DeviceList';
 import { BrandsBar } from '../../features/BrandsBar';
@@ -6,8 +6,9 @@ import { TypeBar } from '../../features/TypeBar';
 import { shopingContext } from '../../processes/ShopingProcess';
 import './Shop.css';
 
-export const Shop = observer(() => {
+export function Shop() {
     const { typesBarStore, brandsBarStore } = useContext(shopingContext);
+    // console.log(toJS(typesBarStore.selectedType));
     return (
         <div className="shop">
             <div className="shop__content-wrapper">
@@ -17,11 +18,11 @@ export const Shop = observer(() => {
                 <main className="shop__main">
                     <BrandsBar />
                     <DeviceList 
-                        type={typesBarStore.selectedType}
-                        brand={brandsBarStore.selectedBrand}
+                        // type={typesBarStore.selectedType}
+                        // brand={brandsBarStore.selectedBrand}
                     />    
                 </main>
             </div>
         </div>
     )
-});
+}

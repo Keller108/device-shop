@@ -13,7 +13,7 @@ import { ADMIN_ROUTE,
 
 export type AuthRouteType = {
     path: string;
-    Component: () => JSX.Element;
+    Component: any;
 }
 
 export const authRoutes: AuthRouteType[] = [

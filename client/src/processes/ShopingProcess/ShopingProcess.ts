@@ -1,4 +1,3 @@
-import { makeAutoObservable, observable } from "mobx";
 import DeviceStore from "../../entities/Device/store/DeviceStore";
 import { BrandsBarStore } from "../../features/BrandsBar/store/BrandsBarStore";
 import { TypesBarStore } from "../../features/TypeBar/store/TypesBarStore";
@@ -12,11 +11,5 @@ export class ShopingProcess {
         this.typesBarStore = new TypesBarStore();
         this.brandsBarStore = new BrandsBarStore();
         this.deviceStore = new DeviceStore();
-
-        makeAutoObservable(this, {
-            typesBarStore: observable,
-            brandsBarStore: observable,
-            deviceStore: observable
-        })
     }
 }
