@@ -18,6 +18,10 @@ export const DeviceList = observer(() => {
         deviceStore.getDevices(typesBarStore.selectedType?.id ?? undefined);
     }, [typesBarStore.selectedType])
 
+    const selectDevice = (device: DeviceEntityType) => {
+        deviceStore.setSelectedDevice(device);
+    };
+
     return (
         <ul className="device-list">
             { deviceStore.devices ? deviceStore.devices.map((device: DeviceEntityType) => {
@@ -25,7 +29,8 @@ export const DeviceList = observer(() => {
                         id: device.id,
                         img: device.img,
                         name: device.name,
-                        price: device.price
+                        price: device.price,
+                        device: device
                     };
                     return <DeviceItem key={device.name} config={deviceConfig} />;
                 }) : <DeviceTempate />

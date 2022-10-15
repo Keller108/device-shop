@@ -15,15 +15,17 @@ export interface DeviceEntityType extends DefaultEntityType {
 
 export default class DeviceStore {
     devices: DeviceEntityType[] | [];
-    selectedType: {} | DefaultEntityType;
+    selectedDevice: {} | DeviceEntityType;
 
     constructor() {
         this.devices = [];
-        this.selectedType = {};
+        this.selectedDevice = {};
 
         makeAutoObservable(this, {
             devices: observable,
-            getDevices: action
+            selectedDevice: observable,
+            getDevices: action,
+            setSelectedDevice: action
         });
     }
 
@@ -53,7 +55,25 @@ export default class DeviceStore {
         }).then(handleResponse).catch(err => console.log(err));
     }
 
+    private fetchOneDevice(deviceId: number) {
+        return fetch(`${DEVICES_URL}/${deviceId}`, {
+            method: "GET",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        }).then(handleResponse).catch(err => console.log(err));
+    }
+
     public getDevices(typeId?: number, brandId?: number) {
         this.fetchDevices(typeId, brandId).then(res => this.devices = res.rows);
+    }
+
+    public getOneDevice(deviceId: number) {
+        this.fetchOneDevice(deviceId).then(res => this.selectedDevice = res);
+    }
+
+    public setSelectedDevice(device: DeviceEntityType) {
+        this.selectedDevice = device;
     }
 }

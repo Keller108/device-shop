@@ -40,8 +40,8 @@ export const publicRoutes: AuthRouteType[] = [
         path: REGISTRATION_ROUTE,
         Component: AuthPage
     },
-    {
-        path: DEVICE_ROUTE + '/:id',
-        Component: DevicePage
-    }
+    // {
+    //     path: DEVICE_ROUTE + '/:id',
+    //     Component: DevicePage
+    // }
 ];
