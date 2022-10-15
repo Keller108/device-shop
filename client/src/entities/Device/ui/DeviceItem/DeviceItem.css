@@ -8,6 +8,8 @@
     background-color: white;
     border-radius: 20px;
     overflow: hidden;
+    transition: all .2s;
+    cursor: pointer;
 }
 
 .device-item:hover {
@@ -17,7 +19,7 @@
 .device-item__img {
     width: 100%;
     object-fit: cover;
-    height: auto;
+    height: 240px;
     font-size: 0;
     margin: 0;
     padding: 0;

@@ -7,8 +7,7 @@ import { shopingContext } from '../../processes/ShopingProcess';
 import './Shop.css';
 
 export function Shop() {
-    const { typesBarStore, brandsBarStore } = useContext(shopingContext);
-    // console.log(toJS(typesBarStore.selectedType));
+    // const { typesBarStore, brandsBarStore } = useContext(shopingContext);
     return (
         <div className="shop">
             <div className="shop__content-wrapper">
@@ -17,10 +16,7 @@ export function Shop() {
                 </div>
                 <main className="shop__main">
                     <BrandsBar />
-                    <DeviceList 
-                        // type={typesBarStore.selectedType}
-                        // brand={brandsBarStore.selectedBrand}
-                    />    
+                    <DeviceList/>
                 </main>
             </div>
         </div>
