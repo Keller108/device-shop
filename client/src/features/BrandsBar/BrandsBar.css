@@ -1,0 +1,30 @@
+.brands-bar {
+    display: flex;
+    flex-flow: row wrap;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.brands-bar__item {
+    border: 1px solid #202020;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.brands-bar__item:last-of-type {
+    margin-right: 0;
+}
+
+.brands-bar__item:hover {
+    background-color: #202020;
+    color: white;
+}
+
+.brands-bar__item_active {
+    background-color: #202020;
+    color: white;
+}

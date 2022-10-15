@@ -15,7 +15,7 @@ class DeviceController {
             // Указываем серверу эти файлы отдавать как статику спомощью модуля path
             img.mv(path.resolve(__dirname, '..', 'static', fileName));
 
-            const device = await Device.create({ name, price, brandId, typeId, img: fileName });
+            const device = await Device.create({ name, price, brandId, typeId, info, img: fileName });
             
             if (info) {
                 info = JSON.parse(info);

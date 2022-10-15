@@ -1,0 +1,72 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: stretch;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    padding: 0;
+}
+
+.navbar__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1400px;
+    padding: 4px 20px;
+}
+
+.navbar__content a {
+    text-decoration: none;
+}
+
+.navbar__label {
+    color: #202020;
+}
+
+.navbar__action-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navbar__action-btn {
+    border: 1px solid #202020;
+    border-radius: 20px;
+    background-color: white;
+    color: #202020;
+    line-height: 1;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin-right: 12px;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.navbar__action-btn:hover {
+    background-color: #202020;
+    color: white;
+}
+
+.navbar__action-btn:last-of-type {
+    margin-right: 0;
+}
+
+.navbar__action-btn_type_basket {
+    width: 40px;
+    height: 40px;
+
+    background-image: url("./icons/header-basket-icon_white.svg");
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    outline: none;
+    border: none;
+    border-radius: 40px;
+    background-color: #202020;
+}

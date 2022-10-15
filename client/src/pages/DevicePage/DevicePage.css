@@ -1,0 +1,74 @@
+.device-page {
+    display: flex;
+    width: 100%;
+    padding: 0 20px;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.device-page__main {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.device-page__preview-block {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: 50%;
+    height: auto;
+}
+
+.device-page__preview-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+}
+
+.device-page__details-block {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0 0 20px;
+    margin: 0;
+}
+
+.device-page__title {
+    font-size: 20px;
+    line-height: 1.4;
+    margin: 0;
+    font-weight: 600;
+}
+
+.device-page__price {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.device-page__info-block {
+
+}
+
+.device-page__text {
+
+}
+
+.device-page__action-block {
+
+}
+
+.device-page__add-to-cart-btn {
+
+}
