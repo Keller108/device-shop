@@ -1,0 +1,1 @@
+export { BrandsBar } from './BrandsBar';

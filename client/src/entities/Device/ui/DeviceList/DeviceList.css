@@ -1,0 +1,22 @@
+.device-list {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
+    gap: 20px;
+    transition: all .2s;
+    margin: 0;
+    padding: 0;
+    padding-top: 40px;
+}
+
+.device-list__title {
+    font-size: 32px;
+    line-height: 1;
+    margin: 0;
+    margin-bottom: 20px;
+} 
+
+.device-list__devices {
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,44 @@
+.type-bar {
+    width: 100%;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.type-bar__title {
+    font-size: 18px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.type-bar__list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.type-bar__list-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 40px;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #efefef;
+    cursor: pointer;
+}
+
+.type-bar__list-item_active {
+    color: #23a7ff
+}
+
+.type-bar__list-item-text {
+    color: inherit;
+    font-weight: normal;
+    font-size: 15px;
+}
