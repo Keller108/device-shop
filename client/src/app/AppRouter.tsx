@@ -2,12 +2,12 @@ import { observer } from 'mobx-react-lite';
 import { useContext } from 'react';
 import { Routes, Navigate, Route } from "react-router-dom";
 import { DevicePage } from '../pages/DevicePage/DevicePage';
+import { userContext } from '../processes/UserProcess';
 import { authRoutes, AuthRouteType, publicRoutes } from "../routes";
 import { DEVICE_ROUTE, SHOP_ROUTE } from '../shared/utils/routes';
-import { Context } from './App';
 
 export const AppRouter = observer(() => {
-    const { userStore } = useContext(Context);
+    const { userStore } = useContext(userContext);
 
     return (
         <Routes>

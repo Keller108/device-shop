@@ -1,8 +1,9 @@
 import { makeAutoObservable, observable, action } from "mobx";
+import { UserModel } from "../model/UserModel";
 
 export default class UserStore {
     isAuth: boolean;
-    user: {};
+    user: {} | UserModel;
 
     constructor() {
         this.isAuth = false;
@@ -12,15 +13,15 @@ export default class UserStore {
             isAuth: observable,
             user: observable,
             setIsAuth: action,
-            setUset: action,
+            setUser: action,
         });
     }
 
-    setIsAuth(value: boolean) {
+    public setIsAuth(value: boolean) {
         this.isAuth = value;
     }
 
-    setUset(user: {}) {
+    public setUser(user: {}) {
         this.user = user;
     }
 }

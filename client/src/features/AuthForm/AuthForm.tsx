@@ -1,6 +1,8 @@
+import { toJS } from 'mobx';
+import { observer } from 'mobx-react-lite';
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Context } from '../../app/App';
+import { userContext } from '../../processes/UserProcess';
 import { REGISTRATION_ROUTE, SHOP_ROUTE } from '../../shared/utils/routes';
 import { register, signIn } from './api/auth';
 import './AuthForm.css';
@@ -10,8 +12,8 @@ type AuthFormType = {
     type: string;
 };
 
-export function AuthForm({ type } : AuthFormType) {
-    const { userStore } = useContext(Context);
+export const AuthForm = observer(({ type } : AuthFormType) => {
+    const { userStore } = useContext(userContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -50,6 +52,8 @@ export function AuthForm({ type } : AuthFormType) {
                     localStorage.setItem('jwt', res.token);
                     userStore.setIsAuth(true);
                     navigate(SHOP_ROUTE);
+                    userStore.setUser(res.user);
+                    console.log('user', toJS(userStore.user));
                     // tokenCheck();
                 }            
             }).catch(err => console.log(err))
@@ -59,6 +63,8 @@ export function AuthForm({ type } : AuthFormType) {
                             localStorage.setItem('jwt', res.token);
                             userStore.setIsAuth(true);
                             navigate(SHOP_ROUTE);
+                            userStore.setUser(res.user);
+                            console.log('user', toJS(userStore.user));
                             // tokenCheck();
                         }            
                     }).catch(err => console.log(err))
@@ -68,8 +74,8 @@ export function AuthForm({ type } : AuthFormType) {
         <div className="auth-form">
             <h2 className="auth-form__form-title">{formConfig.title}</h2>
             <form onSubmit={handleSunbmitForm}className="auth-form__form">
-                <input type="text" className="auth-form__input" name="email" onChange={onEmailInputChange} value={email}/>
-                <input type="password" className="auth-form__input" name="password" onChange={onPasswordInputChange} value={password}/>
+                <input type="text" className="auth-form__input" name="shop-email" onChange={onEmailInputChange} value={email}/>
+                <input type="password" className="auth-form__input" name="shop-password" onChange={onPasswordInputChange} value={password}/>
                 <button type="submit" className="auth-form__submit-btn">{formConfig.btnText}</button>
                 <p className="auth-form__another-form-link">{formConfig.linkText}<br/>
                     <Link to={formConfig.path}>{formConfig.linkTo}</Link>
@@ -77,4 +83,4 @@ export function AuthForm({ type } : AuthFormType) {
             </form>
         </div>
     )
-}
+});

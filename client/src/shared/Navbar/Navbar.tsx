@@ -3,14 +3,16 @@ import { NavLink } from 'react-router-dom';
 import { LOGIN_ROUTE, SHOP_ROUTE } from '../utils/routes';
 import { useNavigate } from "react-router-dom";
 import './Navbar.css';
-import { Context } from '../../app/App';
+import { observer } from 'mobx-react-lite';
+import { userContext } from '../../processes/UserProcess';
+import { UserModel } from '../../entities/User/model/UserModel';
 
 type NavbarProps = {
     signOut: () => void;
 }
 
-export function Navbar({ signOut }: NavbarProps) {
-    const { userStore } = useContext(Context);
+export const Navbar = observer(({ signOut }: NavbarProps) => {
+    const { userStore } = useContext(userContext);
     const navigate = useNavigate();
 
     let actionContent: JSX.Element[] | [] = [];
@@ -22,11 +24,20 @@ export function Navbar({ signOut }: NavbarProps) {
     }
 
     if (userStore.isAuth) {
-        actionContent = [
-            <button key="admin-panel" className="navbar__action-btn">Админ панель</button>,
-            <button key="exit" className="navbar__action-btn" onClick={() => signOut()}>Выйти</button>,
-            <button key="basket" className="navbar__action-btn navbar__action-btn_type_basket" aria-label='Корзина'/>
-        ];
+        actionContent = [];
+        //@ts-ignore
+        if (userStore.user.role === "ADMIN") {
+            actionContent = [
+                <button key="admin-panel" className="navbar__action-btn">Админ панель</button>,
+                <button key="exit" className="navbar__action-btn" onClick={() => signOut()}>Выйти</button>,
+                <button key="basket" className="navbar__action-btn navbar__action-btn_type_basket" aria-label='Корзина'/>
+            ];
+        } else {
+            actionContent = [
+                <button key="exit" className="navbar__action-btn" onClick={() => signOut()}>Выйти</button>,
+                <button key="basket" className="navbar__action-btn navbar__action-btn_type_basket" aria-label='Корзина'/>
+            ];
+        }
     }
 
     return (
@@ -39,4 +50,4 @@ export function Navbar({ signOut }: NavbarProps) {
             </div>
         </header>
     )
-}
+});
