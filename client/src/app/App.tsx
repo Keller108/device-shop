@@ -26,15 +26,20 @@ export function App() {
     const jwt = localStorage.getItem('jwt');
 
     if (jwt) {
-        user = jwtDecode(jwt);
-        //@ts-ignore
-        let { id, email, role } = user;
-        userStore.setUser({ id, email, role } as UserModel);
-        check().then((res: Response) => console.log('res',res));
-        console.log('user true', toJS(userStore.user));
+        check().then((res) => {
+            if (res) {
+                if (jwt !== res.token) {
+                    localStorage.setItem('jwt', res.token);
+                    user = jwtDecode(jwt);
+                    let { id, email, role }: any  = user
+                    userStore.setUser({ id, email, role });
+                    userStore.setIsAuth(true);
+                }
+            }
+        }).catch((err) => console.log(`Ошибка ${err.message}`));
     } else {
         localStorage.removeItem('jwt');
-        check().then((res: Response) => {
+        check().then((res) => {
             if (res) {
                 //@ts-ignore
                 console.log('res token', jwtDecode(res.token)
