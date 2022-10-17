@@ -1,15 +1,15 @@
+import jwtDecode from "jwt-decode";
 import { toJS } from "mobx";
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { check } from "../entities/User/api/userApi";
+import { UserModel } from "../entities/User/model/UserModel";
 import UserStore from "../entities/User/store/UserStore";
 import { userContext } from "../processes/UserProcess";
 import { Navbar } from "../shared/Navbar";
 import { SHOP_ROUTE } from "../shared/utils/routes";
 import './App.css';
 import { AppRouter } from "./AppRouter";
-
-export const Context = React.createContext<any>(null);
 
 export function App() {
   const { userStore } = useContext(userContext);
@@ -22,23 +22,33 @@ export function App() {
   };
 
   const tokenCheck = () => {
-    if (userStore.isAuth) {
+    let user;
+    const jwt = localStorage.getItem('jwt');
+
+    if (jwt) {
+        user = jwtDecode(jwt);
         //@ts-ignore
-        let { id, email, role } = userStore.user;
-        check(id, email, role).then((res: Response) => console.log(res));
+        let { id, email, role } = user;
+        userStore.setUser({ id, email, role } as UserModel);
+        check().then((res: Response) => console.log('res',res));
+        console.log('user true', toJS(userStore.user));
+    } else {
+        localStorage.removeItem('jwt');
+        check().then((res: Response) => {
+            if (res) {
+                //@ts-ignore
+                console.log('res token', jwtDecode(res.token)
+            )};
+        });
     }
-  }
+  };
 
   useEffect(() => {
-    if (userStore.user) {
-        tokenCheck();
-    }
-  }, [userStore.user])
+    tokenCheck();
+  }, [])
 
   return (
-    <userContext.Provider value={{
-      userStore: new UserStore()
-    }}>
+    <userContext.Provider value={{userStore}}>
       <div className="app">
         <Navbar signOut={signOut}/>
         <AppRouter />
