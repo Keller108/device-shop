@@ -3,7 +3,7 @@ import { UserModel } from "../model/UserModel";
 
 export default class UserStore {
     isAuth: boolean;
-    user: {} | UserModel;
+    user: UserModel | {};
 
     constructor() {
         this.isAuth = false;

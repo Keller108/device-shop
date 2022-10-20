@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 import './Navbar.css';
 import { observer } from 'mobx-react-lite';
 import { userContext } from '../../processes/UserProcess';
-import { UserModel } from '../../entities/User/model/UserModel';
 
 type NavbarProps = {
+    email: string;
     signOut: () => void;
 }
 
-export const Navbar = observer(({ signOut }: NavbarProps) => {
+export const Navbar = observer(({ email, signOut }: NavbarProps) => {
     const { userStore } = useContext(userContext);
     const navigate = useNavigate();
 
@@ -45,6 +45,7 @@ export const Navbar = observer(({ signOut }: NavbarProps) => {
             <div className="navbar__content">
                 <NavLink to={SHOP_ROUTE}><h2 className="navbar__label">DeviceShop</h2></NavLink>
                 <div className="navbar__action-container">
+                    {email && <p className="navar__user-email">{email}</p>}
                     { actionContent }
                 </div>
             </div>

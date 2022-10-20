@@ -1,7 +1,7 @@
 import { BASE_API_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, USER_PATH } from "../../../shared/utils/routes";
 
-const REGISTRATION_URL = `${BASE_API_ROUTE}/${USER_PATH}${REGISTRATION_ROUTE}`;
-const AUTH_URL = `${BASE_API_ROUTE}/${USER_PATH}${LOGIN_ROUTE}`;
+const REGISTRATION_URL = `${BASE_API_ROUTE}${USER_PATH}${REGISTRATION_ROUTE}`;
+const AUTH_URL = `${BASE_API_ROUTE}${USER_PATH}${LOGIN_ROUTE}`;
 
 const handleResponse = (res: Response) => res.ok ? res.json() : Promise.reject(`Ошибка ${res.status}`)
 

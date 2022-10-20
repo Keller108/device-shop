@@ -34,6 +34,10 @@
     justify-content: flex-end;
 }
 
+.navar__user-email {
+    margin-right: 20px;
+}
+
 .navbar__action-btn {
     border: 1px solid #202020;
     border-radius: 20px;

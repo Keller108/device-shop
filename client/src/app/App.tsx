@@ -1,10 +1,8 @@
 import jwtDecode from "jwt-decode";
-import { toJS } from "mobx";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { check } from "../entities/User/api/userApi";
 import { UserModel } from "../entities/User/model/UserModel";
-import UserStore from "../entities/User/store/UserStore";
 import { userContext } from "../processes/UserProcess";
 import { Navbar } from "../shared/Navbar";
 import { SHOP_ROUTE } from "../shared/utils/routes";
@@ -13,26 +11,27 @@ import { AppRouter } from "./AppRouter";
 
 export function App() {
   const { userStore } = useContext(userContext);
+  const [user, setUser] = useState(userStore.user as UserModel);
   const navigate = useNavigate();
 
   const signOut = () => {
     localStorage.removeItem('jwt');
     userStore.setIsAuth(false);
+    setUser({} as UserModel);
     navigate(SHOP_ROUTE);
   };
 
   const tokenCheck = () => {
-    let user;
     const jwt = localStorage.getItem('jwt');
-
     if (jwt) {
         check().then((res) => {
             if (res) {
                 if (jwt !== res.token) {
                     localStorage.setItem('jwt', res.token);
-                    user = jwtDecode(jwt);
-                    let { id, email, role }: any  = user
+                    let user: UserModel = jwtDecode(jwt);
+                    let { id, email, role } = user;
                     userStore.setUser({ id, email, role });
+                    setUser({ id, email, role });
                     userStore.setIsAuth(true);
                 }
             }
@@ -52,10 +51,14 @@ export function App() {
     tokenCheck();
   }, [])
 
+  useEffect(() => {
+    tokenCheck();
+  }, [userStore.isAuth])
+
   return (
     <userContext.Provider value={{userStore}}>
       <div className="app">
-        <Navbar signOut={signOut}/>
+        <Navbar email={user.email} signOut={signOut}/>
         <AppRouter />
       </div>
     </userContext.Provider>
