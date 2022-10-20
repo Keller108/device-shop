@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { LOGIN_ROUTE, SHOP_ROUTE } from '../utils/routes';
+import { ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE } from '../utils/routes';
 import { useNavigate } from "react-router-dom";
 import './Navbar.css';
 import { observer } from 'mobx-react-lite';
@@ -19,7 +19,11 @@ export const Navbar = observer(({ email, signOut }: NavbarProps) => {
 
     if (!userStore.isAuth) {
         actionContent = [
-            <button key="sign-in" onClick={() => navigate(LOGIN_ROUTE)} className="navbar__action-btn">Войти</button>
+            <button
+                key="sign-in"
+                onClick={() => navigate(LOGIN_ROUTE)}
+                className="navbar__action-btn"
+            >Войти</button>
         ];
     }
 
@@ -28,14 +32,33 @@ export const Navbar = observer(({ email, signOut }: NavbarProps) => {
         //@ts-ignore
         if (userStore.user.role === "ADMIN") {
             actionContent = [
-                <button key="admin-panel" className="navbar__action-btn">Админ панель</button>,
-                <button key="exit" className="navbar__action-btn" onClick={() => signOut()}>Выйти</button>,
-                <button key="basket" className="navbar__action-btn navbar__action-btn_type_basket" aria-label='Корзина'/>
+                <button
+                    key="admin-panel"
+                    className="navbar__action-btn"
+                    onClick={() => navigate(ADMIN_ROUTE)}
+                >Админ панель</button>,
+                <button
+                    key="exit"
+                    className="navbar__action-btn"
+                    onClick={() => signOut()}
+                >Выйти</button>,
+                <button
+                    key="basket"
+                    className="navbar__action-btn navbar__action-btn_type_basket"
+                    aria-label='Корзина'
+                />
             ];
         } else {
             actionContent = [
-                <button key="exit" className="navbar__action-btn" onClick={() => signOut()}>Выйти</button>,
-                <button key="basket" className="navbar__action-btn navbar__action-btn_type_basket" aria-label='Корзина'/>
+                <button key="exit"
+                    className="navbar__action-btn"
+                    onClick={() => signOut()}
+                >Выйти</button>,
+                <button
+                    key="basket"
+                    className="navbar__action-btn navbar__action-btn_type_basket"
+                    aria-label='Корзина'
+                />
             ];
         }
     }
@@ -43,7 +66,9 @@ export const Navbar = observer(({ email, signOut }: NavbarProps) => {
     return (
         <header className="navbar">
             <div className="navbar__content">
-                <NavLink to={SHOP_ROUTE}><h2 className="navbar__label">DeviceShop</h2></NavLink>
+                <NavLink to={SHOP_ROUTE}>
+                    <h2 className="navbar__label">DeviceShop</h2>
+                </NavLink>
                 <div className="navbar__action-container">
                     {email && <p className="navar__user-email">{email}</p>}
                     { actionContent }
