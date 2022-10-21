@@ -25,7 +25,7 @@ export function DeviceItem({ config }: DeviceItemProps) {
                 navigate(`${DEVICE_ROUTE}/${config.id}`);
             }} 
             className="device-item">
-            <img src={IMG_TEMPLATE} alt={config.name} className="device-item__img"/>
+            <img src={process.env.REACT_APP_API_URL + config.img} alt={config.name} className="device-item__img"/>
             <div className="device-item__text-wrap">
                 <p className="device-item__name">{config.name}</p>
                 <h3 className="device-item__price">{config.price}</h3>
