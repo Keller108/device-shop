@@ -36,4 +36,23 @@ export class TypesBarStore {
     public setSelectedType(type: DefaultEntityType) {
         this.selectedType = type;
     }
+
+    public createType(type: string) {
+        return fetch(TYPES_URL, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+            },
+            body: JSON.stringify(type)
+        }).then(res => {
+            console.log(`Тип ${type} успешно создан`);
+            this.update();
+        })
+        .catch(err => console.log(`Ошибка при создании:`, err.message));
+    }
+
+    private update() {
+        return this.fetchTypes();
+    }
 }

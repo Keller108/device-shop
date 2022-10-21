@@ -1,5 +1,4 @@
 import './DeviceItem.css';
-import IMG_TEMPLATE from '../../../../shared/assets/img/picture-template.jpg';
 import { useNavigate } from 'react-router-dom';
 import { DEVICE_ROUTE } from '../../../../shared/utils/routes';
 import { DeviceEntityType } from '../../store/DeviceStore';

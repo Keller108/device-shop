@@ -1,4 +1,4 @@
-import { AdminPanel } from "./pages/AdminPanel/AdminPanel";
+import { AdminPanelPage } from "./pages/AdminPanelPage/AdminPanelPage";
 import { AuthPage } from "./pages/AuthPage/AuthPage";
 import { BasketPage } from "./pages/BasketPage/BasketPage";
 import { DevicePage } from "./pages/DevicePage/DevicePage";
@@ -19,7 +19,7 @@ export type AuthRouteType = {
 export const authRoutes: AuthRouteType[] = [
     {
         path: ADMIN_ROUTE,
-        Component: AdminPanel
+        Component: AdminPanelPage
     },
     {
         path: BASKET_ROUTE,

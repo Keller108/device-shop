@@ -1,14 +1,5 @@
 .admin-panel {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: calc(100vh - 76px);
-    box-sizing: border-box;
-}
-
-.admin-panel__main {
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -17,6 +8,13 @@
     padding: 40px;
     border-radius: 20px;
     border: 1px solid #202020;
+}
+
+.admin-panel__heading {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 30px;
 }
 
 .admin-panel__add-btn {

@@ -1,10 +1,10 @@
 import jwtDecode from "jwt-decode";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { check } from "../entities/User/api/userApi";
 import { UserModel } from "../entities/User/model/UserModel";
 import { userContext } from "../processes/UserProcess";
-import { Navbar } from "../shared/Navbar";
+import { Navbar } from "../shared/ui/Navbar";
 import { SHOP_ROUTE } from "../shared/utils/routes";
 import './App.css';
 import { AppRouter } from "./AppRouter";
